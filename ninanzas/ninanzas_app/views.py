@@ -1,3 +1,67 @@
-from django.shortcuts import render
+"""Módulo que contiene las vistas"""
+from rest_framework import status
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from rest_framework.permissions import IsAuthenticated
+from rest_framework_simplejwt.tokens import RefreshToken
+from .models import Category, Transaction, Budget
+from .serializers import (UserLoginSerializer, UserRegistrationSerializer,
+                          CategorySerializer, TransactionSerializer, BudgetSerializer)
 
-# Create your views here.
+
+
+class UserLoginAPIView(APIView):
+    """Vista para el inicio de sesión de usuario."""
+    def post(self, request):
+        """Maneja las solicitudes POST para iniciar sesión de usuario."""
+        serializer = UserLoginSerializer(data=request.data)
+        if serializer.is_valid():
+            user = serializer.validated_data['user']
+            refresh = RefreshToken.for_user(user)
+            return Response(
+    {
+        'refresh': str(refresh),
+        'access': str(refresh.access_token)
+    },
+    status=status.HTTP_200_OK
+)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class UserRegistrationAPIView(APIView):
+    """Vista para el registro de usuario."""
+
+    def post(self, request):
+        """Maneja las solicitudes POST para registrar un nuevo usuario."""
+        serializer = UserRegistrationSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class CategoryAPIView(APIView):
+    """Vista para las categorías."""
+    permission_classes = [IsAuthenticated]
+
+    def get(self):
+        """Maneja las solicitudes GET para obtener todas las categorías."""
+        serializer = CategorySerializer(Category, many=True)
+        return Response(serializer.data)
+
+class TransactionAPIView(APIView):
+    """Vista para las transacciones."""
+    permission_classes = [IsAuthenticated]
+
+    def get(self):
+        """Maneja las solicitudes GET para obtener todas las transacciones."""
+        serializer = TransactionSerializer(Transaction, many=True)
+        return Response(serializer.data)
+
+class BudgetAPIView(APIView):
+    """Vista para los presupuestos."""
+    permission_classes = [IsAuthenticated]
+
+    def get(self):
+        """Maneja las solicitudes GET para obtener todos los presupuestos."""
+        serializer = BudgetSerializer(Budget, many=True)
+        return Response(serializer.data)
