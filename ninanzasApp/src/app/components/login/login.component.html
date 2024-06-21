@@ -20,7 +20,9 @@
       <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
       <div class="text">
         <button type="button" class="forgot-password">Olvido su clave?</button><br>
-        <button type="button" class="register-here"><a href="#register" class="register-here-link">Registrese</a></button>
+        <button type="button" class="register-here">
+          <a [routerLink]="['/register']" class="register-here-link">Registrese</a>
+        </button>
       </div>
       <div class="text">Entre con:</div>
       <figure>
