@@ -1,0 +1,190 @@
+body {
+    background-color: #dde1e9;
+    margin: 0;
+    font-family: 'Comfortaa', sans-serif;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #91A3B2;
+    padding: 1em;
+    box-sizing: border-box;
+}
+
+.left, .right {
+    width: 100%;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+}
+
+.logo {
+    width: 50%;
+    max-width: 200px;
+}
+
+.title {
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 1em;
+    color: #fff;
+}
+
+.text-slogan {
+    display: none;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2em;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.inputs-container {
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+.inputs-info {
+    width: 100%;
+    padding: 1em;
+    margin-bottom: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1rem;
+    box-shadow: 0 4px 4px #3c63b3;
+}
+
+.submit {
+    width: 100%;
+    padding: 1em;
+    background-color: #3862A1;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.text {
+    margin-top: 1em;
+    font-size: 0.9rem;
+    color: #3c3c3c;
+    text-align: center;
+}
+
+.forgot-password, .register-here {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #3c63b3;
+    font-size: 1rem;
+    margin: 0.5em 0;
+}
+
+.google-button, .facebook-button {
+    box-shadow: 0 4px 4px #3c63b3;
+    border-radius: 10px;
+    width: 4em;
+    height: 4em;
+    margin: 1em;
+    cursor: pointer;
+}
+
+.google-img, .facebook-img {
+    width: 2em;
+    height: 2em;
+}
+
+.error-message {
+    text-align: center;
+    color: #3c3c3c;
+    margin-top: 0.5em;
+}
+
+@media screen and (min-width: 768px) {
+    .login-container {
+        flex-direction: row;
+        align-items: flex-start;
+        padding: 2em;
+    }
+
+    .left {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .right {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .logo {
+        width: 100%;
+        margin-top: 3em;
+    }
+
+    .title {
+        font-size: 2.5rem;
+    }
+
+    .text-slogan {
+        display: block;
+        color: #fff;
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .login-form {
+        width: 60%;
+        padding: 3em;
+        margin-top: 4em;
+    }
+
+    .inputs-info {
+        font-size: 1rem;
+    }
+
+    .submit {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .logo {
+        width: 70%;
+        max-width: 150px;
+    }
+
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .inputs-container {
+        width: 90%;
+    }
+
+    .google-button, .facebook-button {
+        width: 3em;
+        height: 3em;
+    }
+
+    .google-img, .facebook-img {
+        width: 1.5em;
+        height: 1.5em;
+    }
+}

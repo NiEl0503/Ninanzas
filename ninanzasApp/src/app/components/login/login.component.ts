@@ -30,4 +30,8 @@ export class LoginComponent {
       this.errorMessage = 'Error de inicio de sesión: credenciales incorrectas o problema del servidor 😱';
     });
   }
+
+  getImagePath(imageName: string): string {
+    return `assets/${imageName}`;
+  }
 }
