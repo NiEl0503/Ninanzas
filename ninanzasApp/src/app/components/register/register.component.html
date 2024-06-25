@@ -5,17 +5,17 @@
       </figure>
     </div>
     <div class="right">
-      <h1 class="title">Registrarse</h1>
+      <h1 class="title">Registro</h1>
       <form class="register-form" (ngSubmit)="register()">
         <div class="inputs-container">
-          <input type="text" class="inputs-info" placeholder="Nombre" [(ngModel)]="firstName" name="firstName" required>
-          <input type="text" class="inputs-info" placeholder="Apellido" [(ngModel)]="lastName" name="lastName" required>
+          <input type="text" class="inputs-info" placeholder="NOMBRE" [(ngModel)]="firstName" name="firstName" required>
+          <input type="text" class="inputs-info" placeholder="APELLIDO" [(ngModel)]="lastName" name="lastName" required>
           <input type="email" class="inputs-info" placeholder="E-MAIL" [(ngModel)]="email" name="email" required>
-          <input type="password" class="inputs-info" placeholder="Crear Clave" [(ngModel)]="password" name="password" required>
-          <input type="password" class="inputs-info" placeholder="Confirma Clave" [(ngModel)]="confirmPassword" name="confirmPassword" required>
+          <input type="password" class="inputs-info" placeholder="CREAR CLAVE" [(ngModel)]="password" name="password" required>
+          <input type="password" class="inputs-info" placeholder="CONFIRMAR CLAVE" [(ngModel)]="confirmPassword" name="confirmPassword" required>
         </div>
         <nav>
-          <button type="submit" class="submit">Registrarse</button>
+          <button type="submit" class="submit">Registrar</button>
         </nav>
         <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
       </form>
