@@ -99,6 +99,7 @@ body {
     height: 4em;
     margin: 1em;
     cursor: pointer;
+    display: inline-block;
 }
 
 .google-img, .facebook-img {
@@ -164,10 +165,54 @@ body {
     }
 }
 
+@media screen and (max-width: 1200px) and (min-width: 768px) {
+    .login-container {
+        flex-direction: column;
+    }
+
+    .left, .right {
+        width: 100%;
+    }
+
+    .logo {
+        width: 100%;
+        max-width: 180px;
+        margin-top: 25em;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+
+    .login-form {
+        width: 80%;
+        padding: 2em;
+    }
+
+    .inputs-container {
+        width: 90%;
+    }
+
+    .google-button, .facebook-button {
+        width: 3em;
+        height: 3em;
+    }
+
+    .google-img, .facebook-img {
+        width: 1.5em;
+        height: 1.5em;
+    }
+}
+
 @media screen and (max-width: 480px) {
+    .login-container {
+        flex-direction: column;
+    }
+
     .logo {
         width: 70%;
         max-width: 150px;
+        margin-top: 10em;
     }
 
     .title {
@@ -186,5 +231,44 @@ body {
     .google-img, .facebook-img {
         width: 1.5em;
         height: 1.5em;
+    }
+}
+
+@media screen and (max-width: 768px) and (min-width: 480px) {
+    .login-container {
+        flex-direction: column;
+    }
+
+    .left, .right {
+        width: 100%;
+    }
+
+    .logo {
+        width: 60%;
+        max-width: 160px;
+        margin-top: 10em;
+    }
+
+    .title {
+        font-size: 1.8rem;
+    }
+
+    .login-form {
+        width: 90%;
+        padding: 2em;
+    }
+
+    .inputs-container {
+        width: 95%;
+    }
+
+    .google-button, .facebook-button {
+        width: 3.5em;
+        height: 3.5em;
+    }
+
+    .google-img, .facebook-img {
+        width: 1.75em;
+        height: 1.75em;
     }
 }
