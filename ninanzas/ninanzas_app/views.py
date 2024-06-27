@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth import authenticate
+from django.db import models
 from rest_framework_simplejwt.tokens import RefreshToken
 from .models import Category, Transaction, Budget
 from .serializers import (UserLoginSerializer, UserRegistrationSerializer,
@@ -77,16 +78,32 @@ class DashboardAPIView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
-        """Maneja las solicitudes GET para obtener datos del dashboard."""
+        """Maneja las solicitudes GET para obtener los datos del dashboard."""
         user = request.user
         transactions = Transaction.objects.filter(user=user) # pylint: disable=no-member
         budgets = Budget.objects.filter(user=user) # pylint: disable=no-member
+        categories = Category.objects.all() # pylint: disable=no-member
+
+        total_income = (
+            transactions.filter(transaction_type='income')
+            .aggregate(models.Sum('amount'))['amount__sum'] or 0
+        )
+        total_expense = (
+            transactions.filter(transaction_type='expense')
+            .aggregate(models.Sum('amount'))['amount__sum'] or 0
+        )
+        total_savings = total_income - total_expense
 
         transaction_serializer = TransactionSerializer(transactions, many=True)
         budget_serializer = BudgetSerializer(budgets, many=True)
+        category_serializer = CategorySerializer(categories, many=True)
 
         return Response({
+            'total_income': total_income,
+            'total_expense': total_expense,
+            'total_savings': total_savings,
             'transactions': transaction_serializer.data,
             'budgets': budget_serializer.data,
+            'categories': category_serializer.data,
         })
     
