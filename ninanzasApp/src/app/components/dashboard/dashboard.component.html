@@ -1,1 +1,17 @@
-<p>dashboard works!</p>
+<div class="dashboard-container">
+    <h1>Dashboard</h1>
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+    
+    <div class="financial-summary">
+      <h2>Resumen de Finanzas</h2>
+      <div>Ingreso Total: {{ totalIncome }}</div>
+      <div>Egreso Total: {{ totalExpense }}</div>
+      <div>Ahorro Total: {{ totalSavings }}</div>
+    </div>
+    
+    <div class="recent-transactions">
+      <h2>Lista de Últimas Transacciones:</h2>
+    </div>
+    
+  </div>
+  
