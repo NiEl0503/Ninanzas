@@ -2,7 +2,8 @@
 from django.views.generic.base import RedirectView
 from django.urls import path
 from ninanzas_app.views import (UserLoginAPIView, UserRegistrationAPIView,
-                                CategoryAPIView, TransactionAPIView, BudgetAPIView)
+                                CategoryAPIView, TransactionAPIView, BudgetAPIView,
+                                DashboardAPIView)
 
 urlpatterns = [
     path('', RedirectView.as_view(url='/login/', permanent=True)),
@@ -11,4 +12,5 @@ urlpatterns = [
     path('categories/', CategoryAPIView.as_view(), name='categories'),
     path('transactions/', TransactionAPIView.as_view(), name='transactions'),
     path('budgets/', BudgetAPIView.as_view(), name='budgets'),
+    path('dashboard/', DashboardAPIView.as_view(), name='dashboard'),
 ]

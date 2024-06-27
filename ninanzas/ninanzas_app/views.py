@@ -71,3 +71,22 @@ class BudgetAPIView(APIView):
         budgets = Budget.objects.all() # pylint: disable=no-member
         serializer = BudgetSerializer(budgets, many=True)
         return Response(serializer.data)
+
+class DashboardAPIView(APIView):
+    """Vista para el dashboard."""
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        """Maneja las solicitudes GET para obtener datos del dashboard."""
+        user = request.user
+        transactions = Transaction.objects.filter(user=user) # pylint: disable=no-member
+        budgets = Budget.objects.filter(user=user) # pylint: disable=no-member
+
+        transaction_serializer = TransactionSerializer(transactions, many=True)
+        budget_serializer = BudgetSerializer(budgets, many=True)
+
+        return Response({
+            'transactions': transaction_serializer.data,
+            'budgets': budget_serializer.data,
+        })
+    
