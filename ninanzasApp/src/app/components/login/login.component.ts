@@ -24,6 +24,8 @@ export class LoginComponent {
     const data = { email: this.email, password: this.password };
     this.apiService.login(data).subscribe(response => {
       console.log(response);
+      localStorage.setItem('accessToken', response.access);
+      localStorage.setItem('refreshToken', response.refresh);
       this.authService.login();
       this.router.navigate(['/dashboard']);
     }, error => {
