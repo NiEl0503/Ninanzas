@@ -1,1 +1,21 @@
-<p>categories works!</p>
+<div class="manage-categories">
+    <h2>Gestionar Categorías</h2>
+    <form (ngSubmit)="onAddCategory()">
+      <div>
+        <label for="category-name">Nombre de la Categoría</label>
+        <input type="text" id="category-name" [(ngModel)]="newCategory.name" name="name" required>
+      </div>
+      <button type="submit">Agregar Categoría</button>
+    </form>
+  
+    <div class="category-list">
+      <h3>Lista de Categorías</h3>
+      <ul>
+        <li *ngFor="let category of categories">
+          {{ category.name }}
+          <button (click)="onDeleteCategory(category.id)">Eliminar</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+  

@@ -1,0 +1,93 @@
+.manage-categories {
+    padding: 20px;
+    max-width: 800px;
+    margin: 20px auto 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    color: #3862A1;
+    text-align: center;
+  }
+  
+  .manage-categories h2 {
+    font-size: 2rem;
+  }
+  
+  .manage-categories form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .manage-categories form div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .manage-categories form input, .manage-categories form select, .manage-categories form button {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+  }
+
+  .manage-categories form button {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 30%;
+  }
+  
+  .manage-categories form button {
+    background-color: #3862A1;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .manage-categories form button:hover {
+    background-color: #2c4b84;
+  }
+  
+  .category-list {
+    margin-top: 20px;
+  }
+  
+  .category-list h3 {
+    font-size: 1.5rem;
+  }
+  
+  .category-list ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .category-list li {
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .category-list button {
+    background-color: #3862A1;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .category-list button:hover {
+    background-color:  #2c4b84;
+  }
+  
