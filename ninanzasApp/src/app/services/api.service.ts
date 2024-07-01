@@ -22,6 +22,14 @@ export class ApiService {
     return this.httpClient.get(`${this.baseUrl}/categories/`);
   }
 
+  addCategory(category: any): Observable<any> {
+    return this.httpClient.post(`${this.baseUrl}/categories/`, category);
+  }
+
+  deleteCategory(categoryId: number): Observable<any> {
+    return this.httpClient.delete(`${this.baseUrl}/categories/${categoryId}/`);
+  }
+
   getTransactions(): Observable<any> {
     return this.httpClient.get(`${this.baseUrl}/transactions/`);
   }
