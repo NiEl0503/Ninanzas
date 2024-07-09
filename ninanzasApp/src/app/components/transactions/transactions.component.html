@@ -1,1 +1,31 @@
-<p>transactions works!</p>
+<div class="add-transaction">
+    <h2>Agregar Transacción</h2>
+    <form (ngSubmit)="onAddTransaction()">
+      <div>
+        <label for="category">Categoría</label>
+        <select id="category" [(ngModel)]="newTransaction.category" name="category" required>
+          <option *ngFor="let category of categories" [value]="category.name">{{ category.name }}</option>
+        </select>
+      </div>
+      <div>
+        <label for="amount">Cantidad</label>
+        <input type="number" id="amount" [(ngModel)]="newTransaction.amount" name="amount" required>
+      </div>
+      <div>
+        <label for="description">Descripción</label>
+        <input type="text" id="description" [(ngModel)]="newTransaction.description" name="description" required>
+      </div>
+      <button type="submit">Agregar</button>
+    </form>
+  </div>
+  
+  <div class="recent-transactions">
+    <h2 class="recent-transactions-title">Lista de Últimas Transacciones:</h2>
+    <ul>
+      <li *ngFor="let transaction of transactions">
+        {{ transaction.category }} - {{ transaction.amount }} - {{ transaction.description }}
+        <button (click)="onDeleteTransaction(transaction.id)">Eliminar</button>
+      </li>
+    </ul>
+  </div>
+  
