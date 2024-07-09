@@ -34,6 +34,14 @@ export class ApiService {
     return this.httpClient.get(`${this.baseUrl}/transactions/`);
   }
 
+  addTransaction(transaction: any): Observable<any> {
+    return this.httpClient.post(`${this.baseUrl}/transactions/`, transaction);
+  }
+
+  deleteTransaction(transactionId: number): Observable<any> {
+    return this.httpClient.delete(`${this.baseUrl}/transactions/${transactionId}/`);
+  }
+
   getBudgets(): Observable<any> {
     return this.httpClient.get(`${this.baseUrl}/budgets/`);
   }
