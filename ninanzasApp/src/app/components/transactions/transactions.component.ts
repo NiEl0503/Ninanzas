@@ -17,7 +17,8 @@ export class TransactionsComponent implements OnInit {
   @Output() transactionAdded = new EventEmitter<void>();
   @Output() transactionDeleted = new EventEmitter<void>();
 
-  newTransaction: { category: string, amount: number, description: string } = { category: '', amount: 0, description: '' };
+  newTransaction: { category: number, amount: number, transaction_type: string, description: string, date: string } = 
+    { category: 0, amount: 0, transaction_type: '', description: '', date: '' };
   transactions: any[] = [];
   categories: any[] = [];
   errorMessage: string = '';
@@ -50,7 +51,7 @@ export class TransactionsComponent implements OnInit {
   onAddTransaction(): void {
     this.apiService.addTransaction(this.newTransaction).subscribe(response => {
       this.loadTransactions();
-      this.newTransaction = { category: '', amount: 0, description: '' };
+      this.newTransaction = { category: 0, amount: 0, transaction_type: '', description: '', date: '' };
       this.transactionAdded.emit();
     }, error => {
       console.error(error);

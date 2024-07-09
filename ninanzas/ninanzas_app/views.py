@@ -70,6 +70,16 @@ class TransactionAPIView(APIView):
         serializer = TransactionSerializer(transactions, many=True)
         return Response(serializer.data)
 
+    def post(self, request):
+        """Maneja las solicitudes POST para crear una nueva transacción."""
+        data = request.data.copy()
+        data['user'] = request.user.id
+        serializer = TransactionSerializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 class BudgetAPIView(APIView):
     """Vista para los presupuestos."""
     permission_classes = [IsAuthenticated]

@@ -1,24 +1,33 @@
-<div class="add-transaction">
-    <h2>Agregar Transacción</h2>
-    <form (ngSubmit)="onAddTransaction()">
+    <div class="add-transaction">
+  <h2>Agregar Transacción</h2>
+  <form (ngSubmit)="onAddTransaction()">
       <div>
-        <label for="category">Categoría</label>
-        <select id="category" [(ngModel)]="newTransaction.category" name="category" required>
-          <option *ngFor="let category of categories" [value]="category.name">{{ category.name }}</option>
-        </select>
+          <label for="category">Categoría</label>
+          <select id="category" [(ngModel)]="newTransaction.category" name="category" required>
+              <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+          </select>
       </div>
       <div>
-        <label for="amount">Cantidad</label>
-        <input type="number" id="amount" [(ngModel)]="newTransaction.amount" name="amount" required>
+          <label for="amount">Cantidad</label>
+          <input type="number" id="amount" [(ngModel)]="newTransaction.amount" name="amount" required>
       </div>
       <div>
-        <label for="description">Descripción</label>
-        <input type="text" id="description" [(ngModel)]="newTransaction.description" name="description" required>
+          <label for="transaction_type">Tipo de Transacción</label>
+          <select id="transaction_type" [(ngModel)]="newTransaction.transaction_type" name="transaction_type" required>
+              <option value="income">Ingreso</option>
+              <option value="expense">Gasto</option>
+          </select>
+      </div>
+      <div>
+          <label for="description">Descripción</label>
+          <input type="text" id="description" [(ngModel)]="newTransaction.description" name="description" required>
+      </div>
+      <div>
+          <label for="date">Fecha</label>
+          <input type="date" id="date" [(ngModel)]="newTransaction.date" name="date" required>
       </div>
       <button type="submit">Agregar</button>
-    </form>
-  </div>
-  
+  </form>
   <div class="recent-transactions">
     <h2 class="recent-transactions-title">Lista de Últimas Transacciones:</h2>
     <ul>
@@ -28,4 +37,7 @@
       </li>
     </ul>
   </div>
+</div>
+
+
   
